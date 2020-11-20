@@ -1,6 +1,4 @@
-package hw5;
-
-public class Museum {
+public class RollerCoaster {
 	private boolean cond = true;
 
     public synchronized void load(int val) throws InterruptedException{
