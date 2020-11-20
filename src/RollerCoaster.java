@@ -1,11 +1,13 @@
 public class RollerCoaster {
-	private boolean cond = true;
+    
+    private boolean cond = true;
 
     public synchronized void load(int val) throws InterruptedException{
     	while(!cond) {
             wait();
         }
-
+	
+	//insert here
     	
         notifyAll();
     }
@@ -14,6 +16,8 @@ public class RollerCoaster {
         while(cond) {
             wait();   
         }
+	    
+	 //insert here
 
         notifyAll();
     }
