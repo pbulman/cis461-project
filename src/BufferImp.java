@@ -1,5 +1,3 @@
-package finalproj;
-
 public class BufferImp <E> implements Buffer <E>{
 	
 	protected E[] buf;
