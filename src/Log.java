@@ -1,15 +1,18 @@
+package finalproj;
+
 public class Log implements Runnable {
 
-	Buffer <String> buf;
+	Control c;
 	
-	Log(Buffer <String> b) {buf = b;}
+	public Log(Control cr) {
+		c = cr;
+	}
 	
 	public void run() {
 		try {
-			while(true) {
-				String s = buf.get();
-				System.out.println("Consuming: " + s);
-			}
-		}catch (InterruptedException e){};
-	}
+			c.clean();
+			c.ride();
+		}
+		catch (InterruptedException e) {}
+	}	
 }
