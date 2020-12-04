@@ -1,5 +1,4 @@
 package finalproj;
-import java.util.Random;
 
 public class Passenger implements Runnable {
 
@@ -9,10 +8,13 @@ public class Passenger implements Runnable {
 		c = cr;
 	}
 	
-	public void run() {
+	public synchronized void run() {
 		try {
-			c.load();
-			c.unload();
+			for(int i = 0; i < c.M; i++) {
+				c.load();
+				c.unload();
+			}
+
 		}
 		catch (InterruptedException e) {	
 		}
