@@ -8,8 +8,8 @@ public class LoadRide {
         Thread log = new Thread(new Log(c), "log");
         log.start();
         
-        Thread[] passengers = new Thread[5];
-        for (int i=0; i<5; i++) {
+        Thread[] passengers = new Thread[c.M];
+        for (int i=0; i<c.M; i++) {
         	Thread passenger = new Thread(new Passenger(c));
         	passengers[i] = passenger;
         	passengers[i].start();

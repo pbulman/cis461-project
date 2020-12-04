@@ -8,10 +8,12 @@ public class Log implements Runnable {
 		c = cr;
 	}
 	
-	public void run() {
+	public synchronized void run() {
 		try {
+			for(int i = 0; i < c.M/c.N; i++) {
 			c.clean();
 			c.ride();
+			}
 		}
 		catch (InterruptedException e) {}
 	}	

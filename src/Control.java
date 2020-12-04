@@ -1,49 +1,49 @@
 package finalproj;
 
 public class Control {
-	private int N = 5;
-	private int M = 8;
+	public int N = 5;
+	public int M = 10;
 	boolean left = true;
+	boolean clean = false;
+
 	private int numPassengers = 0;
 	
-	public Control() {
-		
-	}
 	
 	synchronized void load() throws InterruptedException {
-	    while (numPassengers == N)  {
+	    while (clean == false || numPassengers == N || left == true)  {
 	    	wait();
 	    }
-	    ++numPassengers;	 
+	    ++numPassengers;
 	    System.out.println("Passenger loaded: " + numPassengers);
 	    notifyAll();
 	}
 	
 	synchronized void unload() throws InterruptedException {
-	    while (numPassengers == N || !left)  {
+	    while (numPassengers > N || left == false)  {
 	    	wait();
 	    }
+	    clean = false;
 	    --numPassengers;
 	    System.out.println("Passenger unloaded: " + numPassengers);
 	    notifyAll();
 	}
 	
 	synchronized void ride() throws InterruptedException {
-	    while (numPassengers != N || left)  {
+	    while (numPassengers != N)  {
 	    	wait();
 	    }
-	    left = true;	    
+	    left = true;
 	    System.out.println("Ride left");
 	    notifyAll();
 
 	}
 	
 	synchronized void clean() throws InterruptedException {
-	    while (numPassengers == N || !left)  {
+	    while (clean == true || numPassengers != 0)  {
 	    	wait();
 	    }
-	    numPassengers = 0;
-	    left = false;	
+	    clean = true;
+	    left = false;
 	    System.out.println("Cleaned");
 	    notifyAll();
 	}
