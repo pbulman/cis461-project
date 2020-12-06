@@ -1,3 +1,9 @@
+/*
+ * CIS 461 Final Project
+ * Fall 2020 Semester
+ * Peter Bulman and Cole Wagner
+ */
+
 package finalproj;
 
 public class Passenger implements Runnable {
@@ -8,13 +14,13 @@ public class Passenger implements Runnable {
 		c = cr;
 	}
 	
-	public synchronized void run() {
+	public void run() {
 		try {
+			// For each passenger, they will have to be loaded and unloaded
 			for(int i = 0; i < c.M; i++) {
 				c.load();
 				c.unload();
 			}
-
 		}
 		catch (InterruptedException e) {	
 		}
